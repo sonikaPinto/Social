@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+  <div class="container">
+    <h1>Login</h1>
+    {% if forms.errors %}
+      <h3>Incorrect Username or Password</h3>
+    {% endif %}
+
+    <form class="signUp" method="post">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <input type="submit" class="btn btn-primary" value="Login">
+      <input type="hidden" name="next" value="{{next}}">
+    </form>
+  </div>
+{% endblock %}

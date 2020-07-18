@@ -1,0 +1,37 @@
+.custom-nav{
+  font-size: 1.2em;
+  border-bottom: 10px;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #CBB8A9;
+  /* border-bottom: 2px solid black; */
+}
+
+.nav-link,.navbar-brand{
+  color : white;
+}
+
+.navbar-brand{
+  font-size: 1.4em;
+}
+
+.nav-link:hover{
+  color : #E0D3DE;
+  border-bottom: 2px solid white;
+}
+
+.navbar-brand:hover{
+    color : white;
+    font-weight: bold;
+}
+
+.navbar-toggler-icon,.navbar-toggler{
+  border : 2px solid white;
+}
+
+.navbar-toggler-icon{
+  background-color: white;
+}
+
+.mycontent{
+  padding-top: 100px;
+}

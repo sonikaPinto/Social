@@ -34,8 +34,8 @@
         <ul class="navbar-nav navbar-right">
           {% if user.is_authenticated %}
             <li class="nav-item"><a class="nav-link" href="#">Post</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Groups</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Create Group</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'groups:group_list'%}">Groups</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'groups:create_group' %}">Create Group</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a></li>
             <li class="nav-item"><a class="nav-link" href='{% url "home" %}'>Welcome {{user.username}}</a></li>
           {% else %}
@@ -53,7 +53,7 @@
 
       <div class="container mycontent">
         <div class="row">
-          <div class="col-md-11">
+          <div class="col-md-12">
             {% block content %}
             {% endblock %}
           </div>

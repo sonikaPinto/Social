@@ -6,7 +6,8 @@
     {% include "posts/_post.html" with post=object hide_delete=True %}
   </div>
   <form method="post">
+    {% csrf_token %}
     <input type="submit" class="btn btn-danger" value="Confirm delete">
-    <a href="{% url 'post:detail_post' username=user.username pk=object.pk %}" class='btn btn-default'>Cancel</a>
+    <a href="{% url 'posts:detail_post' slug=user.username pk=object.pk %}" class='btn btn-default'>Cancel</a>
   </form>
 {% endblock %}

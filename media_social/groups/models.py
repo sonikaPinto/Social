@@ -9,6 +9,7 @@ from django import template
 
 User = get_user_model()
 #what is this?
+from django import template
 register = template.Library()
 
 class Group(models.Model):

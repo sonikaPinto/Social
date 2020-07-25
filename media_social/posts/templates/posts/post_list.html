@@ -1,4 +1,5 @@
 {% extends 'posts/post_base.html' %}
+{% load humanize %}
 
 {% block prepost %}
   {% if user.is_authenticated %}
@@ -12,8 +13,8 @@
   <h5>All groups</h5>
   <ul class="unorder">
     {% for other_group in get_other_groups %}
-    <li class='list_groups'><a href="{% url 'geoups:group_detail' slug=other_group.group.slug %}">other_group.group.name</a></li>
-    {% enddfor %}
+    <li class='list_groups'><a href="{% url 'groups:group_detail' slug=other_group.group.slug %}">other_group.group.name</a></li>
+    {% endfor %}
   </ul>
 {% endblock %}
 

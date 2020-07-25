@@ -8,6 +8,7 @@ from braces.views import SelectRelatedMixin
 from posts import models
 from posts import forms
 from django.contrib.auth import get_user_model
+from django.contrib import messages
 
 User = get_user_model()
 
@@ -16,7 +17,7 @@ class PostListClass(SelectRelatedMixin,generic.ListView):
     select_related = ('user','group')
 
 class UserPostClass(generic.ListView):
-    model = model.Post
+    model = models.Post
     template_name = 'posts/user_post_list.html'
 
     def get_queryset(self):
@@ -41,7 +42,7 @@ class PostDetail(SelectRelatedMixin,generic.DetailView):
         return queryset.filter(user__username__iexact = self.kwargs.get('username'))
 
 class CreatePost(LoginRequiredMixin,SelectRelatedMixin,generic.CreateView):
-    fields =('message','group')
+    fields = ('message','group')
     model = models.Post
 
     def form_valid(self,form):
@@ -52,12 +53,12 @@ class CreatePost(LoginRequiredMixin,SelectRelatedMixin,generic.CreateView):
 
 class DeletePost(LoginRequiredMixin,SelectRelatedMixin,generic.DeleteView):
     model = models.Post
-    select_related = ('user','post')
+    select_related = ('user','group')
     success_url =reverse_lazy('posts:list_post')
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        return queryset.filter(user_id = SelectRelatedMixinf.request.user.id)
+        return queryset.filter(user_id =  self.request.user.id)
 
     def delete(self,*args,**kwargs):
         messages.success(self.request,'Post Deleted')

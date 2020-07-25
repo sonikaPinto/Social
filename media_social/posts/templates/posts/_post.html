@@ -1,0 +1,17 @@
+<!-- inject html -->
+
+<div class="post_media">
+  <h3>{{post.message_html|safe}}</h3>
+  <div class="media_body">
+    <strong>{{post.user.username}}</strong>
+    <h5 class="media_heading">
+      <a href="{% url 'posts:for_user_post' username=post.user.username %}">{{post.user.username}}'s Posts</a>
+      <time class='time'><a href="{% url 'posts:detail_post' username=post.user.username pk=post.pk %}"></a></time>
+    </h5>
+  </div>
+  <div class="media_footer">
+    {% if user.is_authenticated and post.user == user %}
+    <a href="{% url 'posts:delete' pk=post.pk %}" class='btn btn-danger'>DELETE</a>
+    {% endif %}
+  </div>
+</div>

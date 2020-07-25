@@ -19,7 +19,7 @@
 
 
 {% block post_content %}
-{% endblock %}
-
-{% block post_post %}
+  {% for post in post_list %}
+    {% include 'posts/_post.html' %}
+  {% endfor %}
 {% endblock %}

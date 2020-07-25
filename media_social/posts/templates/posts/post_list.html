@@ -1,0 +1,25 @@
+{% extends 'posts/post_base.html' %}
+
+{% block prepost %}
+  {% if user.is_authenticated %}
+    <h5>Your groups</h5>
+    <ul class="unorder">
+      {% for member_group in get_user_groups %}
+        <li class='list_groups'><a href="{% url 'groups:group_detail' slug=member_group.group.slug %}">member_group.group.name</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <h5>All groups</h5>
+  <ul class="unorder">
+    {% for other_group in get_other_groups %}
+    <li class='list_groups'><a href="{% url 'geoups:group_detail' slug=other_group.group.slug %}">other_group.group.name</a></li>
+    {% enddfor %}
+  </ul>
+{% endblock %}
+
+
+{% block post_content %}
+{% endblock %}
+
+{% block post_post %}
+{% endblock %}
